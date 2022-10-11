@@ -48,7 +48,7 @@ RegisterNetEvent('LENT:CLIENT:RESET:GRAVE', function(OldGrave, state)
 end)
 
 RegisterNetEvent("LENT:CLIENT:GETITEM", function()
-    if isDigging == false then
+    if isDigging == false and QBCore.Functions.HasItem('shovel') then
         local ped = PlayerPedId()
         local playerPos = GetEntityCoords(ped)
         for k, v in pairs(Config.Graves) do
