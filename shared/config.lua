@@ -8,7 +8,7 @@ Config.GraveTimer = 300000 -- Default: 300000 = 5 Minutes
 
 -- [[ Rewards ]] --
 Config.SpecialChance = 75
-Config.ChanceItem = "weapon_de"
+Config.ChanceItem = "weapon_pistol"
 Config.RewardChance = 20
 Config.Rewards ={
     [1] = {
@@ -67,8 +67,3 @@ end
 function Notify(text, type, time)
     QBCore.Functions.Notify(text, type, time)
 end
-
--- [[ Disord Configuration ]] --
-Config.DISCORD_WEBHOOK = ""
-Config.DISCORD_NAME = "LENT - Graverobbery"
-Config.DISCORD_IMAGE = "https://cdn.discordapp.com/attachments/1026175982509506650/1026176123928842270/Lanzaned.png"

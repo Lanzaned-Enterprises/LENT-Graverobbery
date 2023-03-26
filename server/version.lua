@@ -1,6 +1,11 @@
 --[[ Version Checker ]] --
 local version = "1.0.1"
 
+-- [[ Disord Configuration ]] --
+local ISCORD_WEBHOOK = ""
+local ISCORD_NAME = "LENT - Graverobbery"
+local ISCORD_IMAGE = "https://cdn.discordapp.com/attachments/1026175982509506650/1026176123928842270/Lanzaned.png"
+
 AddEventHandler("onResourceStart", function(resource)
     if resource == GetCurrentResourceName() then
         checkResourceVersion()
@@ -18,11 +23,11 @@ function checkUpdateEmbed(color, name, message, footer)
             },
         }
     }
-    PerformHttpRequest(Config.DISCORD_WEBHOOK, function(err, text, headers) end, 
+    PerformHttpRequest(DISCORD_WEBHOOK, function(err, text, headers) end, 
     'POST', json.encode({
-        username = Config.DISCORD_NAME, 
+        username = DISCORD_NAME, 
         embeds = content, 
-        avatar_url = Config.DISCORD_IMAGE
+        avatar_url = DISCORD_IMAGE
     }), { ['Content-Type'] = 'application/json '})
 end
 
