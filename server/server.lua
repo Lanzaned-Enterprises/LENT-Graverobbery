@@ -7,22 +7,22 @@ function ResetGraveTimer(OldGrave)
     local time = tonumber(num)
     SetTimeout(time, function()
         Config.Graves[OldGrave].Looted = false
-        TriggerClientEvent('LENT:CLIENT:RESET:GRAVE', -1, OldGrave, false)
+        TriggerClientEvent('LENT-Graverobbery:Client:ResetGrave', -1, OldGrave, false)
     end)
 end
 
-RegisterServerEvent('LENT:GRAVE:SETSTATE', function(CurGrave)
+RegisterServerEvent('LENT-Graverobbery:Server:SetGraveState', function(CurGrave)
     local OldGrave = nil
     local src = source
     local OldGrave = CurGrave
     if Config.Graves[OldGrave].Looted == false then 
         ResetGraveTimer(OldGrave)
-        TriggerClientEvent('LENT:CLIENT:SETSTATE', -1, OldGrave, true)
+        TriggerClientEvent('LENT-Graverobbery:Client:SetGraveState', -1, OldGrave, true)
     end
     Config.Graves[OldGrave].Looted = true
 end)
 
-RegisterServerEvent("LENT:GRAVE:GETITEM", function(CurGrave)
+RegisterServerEvent("LENT-Graverobbery:Server:GiveItems", function(CurGrave)
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
     local reward = math.random(1, #Config.Rewards)
