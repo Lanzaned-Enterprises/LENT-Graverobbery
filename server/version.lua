@@ -1,5 +1,5 @@
 --[[ Version Checker ]] --
-local version = "2.01"
+local version = "201"
 
 -- [[ Disord Configuration ]] --
 local DISCORD_WEBHOOK = ""
