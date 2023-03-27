@@ -1,5 +1,5 @@
 --[[ Version Checker ]] --
-local version = "1.0.1"
+local version = "200"
 
 -- [[ Disord Configuration ]] --
 local DISCORD_WEBHOOK = ""
@@ -33,24 +33,33 @@ end
 
 function checkResourceVersion()
     PerformHttpRequest("https://raw.githubusercontent.com/Lanzaned-Enterprises/LENT-Graverobbery/main/version.txt", function(err, text, headers)
-        if string.match(text, version) then
+        if text < version then
             print(" ")
-            print("---------- LANZANED Graverobbery ----------")
-            print("Graverobbery is up to date and ready to go!")
-            print("Running on Version: " .. version)
+            print("---------- LANZANED GRAVEROBBERY ----------")
+            print("Graverobbery is using a unstable version!")
+            print("Stable Version: " .. text .. " Please update back to stable branch!")
             print("https://github.com/Lanzaned-Enterprises/LENT-Graverobbery")
             print("--------------------------------------------")
             print(" ")
-            checkUpdateEmbed(20480, "Graverobbery Update Checker", "Graverobbery is up to date and ready to go!\nRunning on Version: " .. version .. "\nhttps://github.com/Lanzaned-Enterprises/Graverobbery", "Script created by: https://discord.lanzaned.com")
-        else
+            checkUpdateEmbed(20480, "Graverobbery Update Checker", "Graverobbery is using a unstable version! Please update back to stable branch!\nStable Version: " .. text .. "\nhttps://github.com/Lanzaned-Enterprises/Graverobbery", "Script created by: https://discord.lanzaned.com")
+        elseif text > version then
             print(" ")
-            print("---------- LANZANED Graverobbery ----------")
+            print("---------- LANZANED GRAVEROBBERY ----------")
             print("Graverobbery is not up to date! Please update!")
             print("Curent Version: " .. version .. " Latest Version: " .. text)
             print("https://github.com/Lanzaned-Enterprises/LENT-Graverobbery")
             print("--------------------------------------------")
             print(" ")
             checkUpdateEmbed(5242880, "Graverobbery Update Checker", "Graverobbery is not up to date! Please update!\nCurent Version: " .. version .. " Latest Version: " .. text .. "\nhttps://github.com/Lanzaned-Enterprises/Graverobbery", "Script created by: https://discord.lanzaned.com")
+        else
+            print(" ")
+            print("---------- LANZANED GRAVEROBBERY ----------")
+            print("Graverobbery is up to date!")
+            print("Curent Version: " .. version .. " Latest Version: " .. text)
+            print("https://github.com/Lanzaned-Enterprises/LENT-Graverobbery")
+            print("--------------------------------------------")
+            print(" ")
+            checkUpdateEmbed(5242880, "Graverobbery Update Checker", "Graverobbery is up to date!\nCurent Version: " .. version .. " Latest Version: " .. text .. "\nhttps://github.com/Lanzaned-Enterprises/Graverobbery", "Script created by: https://discord.lanzaned.com")
         end
     end, "GET", "", {})
 end
