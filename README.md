@@ -12,6 +12,7 @@
 - Add the following item to your `qb-core/shared/items.lua`
 ```lua
 	['shovel'] 				 		 = {['name'] = 'shovel', 			    		['label'] = 'Shovel', 					['weight'] = 15000, 	['type'] = 'item', 		['image'] = 'shovel.png', 				['unique'] = false, 	['useable'] = false, 	['shouldClose'] = false,   ['combinable'] = nil,   ['description'] = 'Get Digging!'},
+    ["grub"] = {["name"] = "grub",  ["label"] = "Grub",  ["weight"] = 100, ["type"] = "item",  ["image"] = "grub.png",  ["unique"] = false,  ["useable"] = false,  ["shouldClose"] = false,  ["description"] = "That's what you get for robbing graves..", },
 ```
 - Add the image from `Images` to your `inventory/html/images`
 - Add the following snipets to `ps-dispatch`
