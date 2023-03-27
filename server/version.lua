@@ -2,9 +2,9 @@
 local version = "1.0.1"
 
 -- [[ Disord Configuration ]] --
-local ISCORD_WEBHOOK = ""
-local ISCORD_NAME = "LENT - Graverobbery"
-local ISCORD_IMAGE = "https://cdn.discordapp.com/attachments/1026175982509506650/1026176123928842270/Lanzaned.png"
+local DISCORD_WEBHOOK = ""
+local DISCORD_NAME = "LENT - Graverobbery"
+local DISCORD_IMAGE = "https://cdn.discordapp.com/attachments/1026175982509506650/1026176123928842270/Lanzaned.png"
 
 AddEventHandler("onResourceStart", function(resource)
     if resource == GetCurrentResourceName() then
