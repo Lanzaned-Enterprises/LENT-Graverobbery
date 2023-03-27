@@ -60,6 +60,7 @@ end exports('GraveRobbery', GraveRobbery)
 |  Rank       |  Member       | ID                 | Qualifications                       |
 |----         |----           |----                |----                                  |
 | Director    | [Lanzaned#2512](https://discordapp.com/users/871877975346405388) | [871877975346405388](https://discordapp.com/users/871877975346405388) | Javascript, XML, HTML, CSS, lua, SQL |
+| Contributor    | [Livid#3397](https://discordapp.com/users/253930519958519808) | [253930519958519808](https://discordapp.com/users/253930519958519808) | N/A |
 
 ## Useful Links 
 Discord: https://discord.lanzaned.com<br>
