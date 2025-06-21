@@ -2,7 +2,7 @@
 local QBCore = exports['qb-core']:GetCoreObject()
 
 -- [[ Variables ]] --
-CementaryLocation = {}
+local CementaryLocation = {}
 local blipSpawned = false
 local isDigging = false
 local ZoneSpawned = false 
@@ -23,18 +23,14 @@ function removeBlip()
 end
 
 function LoadAnimDict( dict )
-    while (not HasAnimDictLoaded(dict)) do
+    while not HasAnimDictLoaded(dict) do
         RequestAnimDict(dict)
         Wait(5)
     end
 end
 
 function IsShovelItemRequired()
-    if Config.GraveRobbery['ItemSettings']['ItemRequired'] then
-        if QBCore.Functions.HasItem(Config.Graverobbery['ItemSettings']['ItemName']) then
-            return true
-        end
-    else
+    if Config.GraveRobbery['ItemSettings']['ItemRequired'] and QBCore.Functions.HasItem(Config.Graverobbery['ItemSettings']['ItemName']) then
         return true
     end
 
@@ -47,14 +43,14 @@ RegisterNetEvent('LENT-Graverobbery:Client:ResetGrave', function(OldGrave, state
 end)
 
 RegisterNetEvent("LENT-Graverobbery:Client:StartDigging", function()
-    if isDigging == false and IsShovelItemRequired() then
+    if not isDigging and IsShovelItemRequired() then
         local ped = PlayerPedId()
         local playerPos = GetEntityCoords(ped)
         TriggerEvent('animations:client:EmoteCommandStart', {"dig"})
         for k, v in pairs(Config.GraveRobbery['Graves']) do
             local dist = #(GetEntityCoords(ped) - vector3(Config.GraveRobbery['Graves'][k]["Coords"].x, Config.GraveRobbery['Graves'][k]["Coords"].y, Config.GraveRobbery['Graves'][k]["Coords"].z))
             if dist <= 2 then
-                if Config.GraveRobbery['Graves'][k].Looted == false then
+                if not Config.GraveRobbery['Graves'][k].Looted then
                     Config.GraveRobbery['Graves'][k].Looted = true
                     CurGrave = k
                     QBCore.Functions.Progressbar("digging", "Digging...", math.random(8000, 15000), false, true, {
@@ -73,7 +69,7 @@ RegisterNetEvent("LENT-Graverobbery:Client:StartDigging", function()
                         TriggerEvent('animations:client:EmoteCommandStart', {"c"})
                         exports["LENT-Library"]:SendNotification("Cancelled.", "error")
                     end)
-                elseif Config.GraveRobbery['Graves'][k].Looted == true then
+                elseif Config.GraveRobbery['Graves'][k].Looted then
                     exports["LENT-Library"]:SendNotification('Seems like someone beat you to it!', 'error', 5000)
                 end
             end

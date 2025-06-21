@@ -15,7 +15,7 @@ RegisterServerEvent('LENT-Graverobbery:Server:SetGraveState', function(CurGrave)
     local OldGrave = nil
     local src = source
     local OldGrave = CurGrave
-    if Config.GraveRobbery['Graves'][OldGrave].Looted == false then 
+    if not Config.GraveRobbery['Graves'][OldGrave].Looted then 
         ResetGraveTimer(OldGrave)
         TriggerClientEvent('LENT-Graverobbery:Client:SetGraveState', -1, OldGrave, true)
     end
@@ -41,7 +41,7 @@ RegisterServerEvent("LENT-Graverobbery:Server:GiveItems", function(CurGrave)
             TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[math.random(1, #Config.GraveRobbery['GraveSettings']['SpecialSettings']['ChanceTable'])], "add", 1)
         end
     end
-    if lootfound == true then 
+    if lootfound then 
         TriggerClientEvent('QBCore:Notify', src, 'You found something!', 'success', 3500)
     else
         TriggerClientEvent('QBCore:Notify', src, 'You found nothing.', 'error', 3500)
